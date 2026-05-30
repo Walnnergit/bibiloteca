@@ -30,6 +30,10 @@ export class Book {
     }
 
     //Setter
+    setId(id: string): void {
+        this.id = id;
+    }
+
     setTitle(title: string): void {
         this.title = title;
     }
@@ -38,23 +42,34 @@ export class Book {
         this.author = author;
     }
 
-    setId(id: string): void {
-        this.id = id;
-    }
     //Estado disponible
     conditionOfDaBook(): void {
-        if(this.available = true)
-        console.log(`El libro con ID ${this.id} esta disponible`)
-        }
-
-    else(){
-        console.log(`El libro con ID ${this.id} no esta disponible`)
+        if(this.available){
+        console.log(`El libro con ID ${this.id} esta disponible`);
+        } else {
+        console.log(`El libro con ID ${this.id} no esta disponible`);
     }
+}
     //Desactivar o activar libro
-    canbiardisponibilidadellibro(nuevadisponibilidad: boolean): void {
-        this.available = nuevadisponibilidad;
+    cambiarDisponibilidad(nuevaDisponibilidad: boolean): void {
+        this.available = nuevaDisponibilidad;
     }
 
+    mostrarDatos(): void {
+        console.log("\n--- INformacion del libro---");
+        console.log("ID:", this.id);
+        console.log("Title:", this.title);
+        console.log("Author:", this.author);
+        console.log("Disponible:", this.available);
+    }
 }
 
+const libro = new Book("1", "Don Quijote", "Miguel De Cervantes", true);
 
+
+libro.mostrarDatos();
+libro.conditionOfDaBook();
+
+
+libro.cambiarDisponibilidad(false);
+libro.conditionOfDaBook();
