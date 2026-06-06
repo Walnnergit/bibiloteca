@@ -1,12 +1,12 @@
 export class Book {
 
     //Properties
-    private id: string;
+    private id: number;
     private title: string;
     private author: string;
     private available: boolean;
 
-    constructor(id: string,
+    constructor(id: number,
         title: string,
         author: string,
         available: boolean){
@@ -17,7 +17,7 @@ export class Book {
     }
 
     //gettter
-    getId(): string {
+    getId(): number {
         return this.id;
     }
 
@@ -30,7 +30,7 @@ export class Book {
     }
 
     //Setter
-    setId(id: string): void {
+    setId(id: number): void {
         this.id = id;
     }
 
@@ -63,13 +63,3 @@ export class Book {
         console.log("Disponible:", this.available);
     }
 }
-
-const libro = new Book("1", "Don Quijote", "Miguel De Cervantes", true);
-
-
-libro.mostrarDatos();
-libro.conditionOfDaBook();
-
-
-libro.cambiarDisponibilidad(false);
-libro.conditionOfDaBook();
