@@ -29,6 +29,10 @@ export class Book {
         return this.author;
     }
 
+    isAvailable(): boolean {
+        return this.available;
+    }
+
     //Setter
     setId(id: number): void {
         this.id = id;
@@ -40,6 +44,15 @@ export class Book {
 
     setAuthor(author: string): void {
         this.author = author;
+    }
+    //Prestar libro
+    borrowBook(): void {
+        this.available = false;
+    }
+
+    //Devolver libro
+    returnBook(): void {
+        this.available = true;
     }
 
     //Estado disponible
@@ -54,12 +67,5 @@ export class Book {
     cambiarDisponibilidad(nuevaDisponibilidad: boolean): void {
         this.available = nuevaDisponibilidad;
     }
-
-    mostrarDatos(): void {
-        console.log("\n--- INformacion del libro---");
-        console.log("ID:", this.id);
-        console.log("Title:", this.title);
-        console.log("Author:", this.author);
-        console.log("Disponible:", this.available);
-    }
 }
+
