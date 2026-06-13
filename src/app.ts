@@ -36,13 +36,18 @@ app.post("/book", (req, res) => {
     });
 });
 
+//Obtener todos los libros
+app.get("/books", (req, res) => {
+    res.json(books);
+})
+
 //Actualizar un libro
 app.put("/book/:id", (req, res) => {
     const id = Number(req.params.id);
     const {title, author} = req.body;
 
     const book = books.find((book) => {
-        book.getId() === id;
+        return book.getId() === id
     });
 
     if (!book) return res.status(404).json({
@@ -50,6 +55,10 @@ app.put("/book/:id", (req, res) => {
     });
 
     if (title) {
+        book.setTitle(title);
+    }
+
+    if (author) {
         book.setAuthor(author);
     }
 
@@ -58,7 +67,7 @@ app.put("/book/:id", (req, res) => {
     })
 });
 // Eliminar libro
-app.delete("/books/:id", (req, res) => {
+app.delete("/book/:id", (req, res) => {
     const id = Number(req.params.id);
 
 const bookIndex = books.findIndex(
@@ -126,4 +135,8 @@ res.json({
     message: "Libro devuelto",
     book
     });
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor ejecutándose en puerto ${PORT}`);
 });
